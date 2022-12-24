@@ -1,4 +1,5 @@
-import React, {useState} from 'react';
+import {useState} from 'react';
+import cl from './style.module.scss'
 
 const Counter = () => {
   const [state, setState] = useState(0)
@@ -10,7 +11,7 @@ const Counter = () => {
   return (
     <div>
       <div>{state}</div>
-      <button onClick={hancldeClick}>+</button>
+      <button className={cl.btn} onClick={hancldeClick}>+</button>
     </div>
   );
 };
