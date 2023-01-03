@@ -1,8 +1,7 @@
-import { AboutPage } from 'pages/AboutPage'
-import { MainPage } from 'pages/MainPage'
 import { Suspense } from 'react'
 import { Link, Route, Routes } from 'react-router-dom'
-import { classNames } from '../shared/lib/classNames/classNames'
+import { routerConfig } from 'shared/config/routerConfig/routerConfig'
+import { classNames } from 'shared/lib/classNames/classNames'
 import { useTheme } from './provides/ThemeProvider/lib/useTheme'
 import './styles/index.scss'
 
@@ -16,8 +15,9 @@ const App = () => {
       <Link to={'/about'}>Перейти на Об странице</Link>
       <Suspense fallback={<div>Loading...</div>}>
         <Routes>
-          <Route path={'/'} element={<MainPage />} />
-          <Route path={'/about'} element={<AboutPage />} />
+          {Object.values(routerConfig).map(({ element, path }) => (
+            <Route key={path} path={path} element={element} />
+          ))}
         </Routes>
       </Suspense>
     </div>
