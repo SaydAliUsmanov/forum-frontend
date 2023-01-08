@@ -1,7 +1,8 @@
 import { Suspense } from 'react'
-import { Link, Route, Routes } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 import { routerConfig } from 'shared/config/routerConfig/routerConfig'
 import { classNames } from 'shared/lib/classNames/classNames'
+import { Navbar } from 'widgets/Navbar'
 import { useTheme } from './provides/ThemeProvider/lib/useTheme'
 import './styles/index.scss'
 
@@ -10,9 +11,8 @@ const App = () => {
 
   return (
     <div className={classNames('app', {}, [theme])}>
+      <Navbar />
       <button onClick={toggleTheme}>ToggleTheme</button>
-      <Link to={'/'}>Перейти на главаную</Link>
-      <Link to={'/about'}>Перейти на Об странице</Link>
       <Suspense fallback={<div>Loading...</div>}>
         <Routes>
           {Object.values(routerConfig).map(({ element, path }) => (
