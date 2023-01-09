@@ -7,12 +7,11 @@ import { useTheme } from './provides/ThemeProvider/lib/useTheme'
 import './styles/index.scss'
 
 const App = () => {
-  const { theme, toggleTheme } = useTheme()
+  const { theme } = useTheme()
 
   return (
     <div className={classNames('app', {}, [theme])}>
       <Navbar />
-      <button onClick={toggleTheme}>ToggleTheme</button>
       <Suspense fallback={<div>Loading...</div>}>
         <Routes>
           {Object.values(routerConfig).map(({ element, path }) => (
